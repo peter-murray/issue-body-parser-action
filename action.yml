@@ -1,0 +1,36 @@
+---
+
+name: Issue Body Parser
+description: Parses the body of an issue to extract instructions/data
+author: peter-murray
+
+inputs:
+    github_token:
+        descritpion: The GitHub token that can be used to obtain the Issue via API lookup
+        required: true
+
+    issue_id:
+        description: The id of the issue to use to extract a payload from the body
+        required: true
+
+    # valid_keys:
+    #     description: A list of valid key names to return from the issue body payload
+    #     required: false
+
+    payload:
+        description: The type of payload, JSON or YAML that we need to parse from the Issue body
+        required: true
+        default: json
+
+    payload_marker:
+        description: An additional marker that is used to identify the desired payload from the Issue body. This can be used to separate multiple blocks that could be provided in the Issue.
+        required: true
+        default: ''
+
+outputs:
+    payload:
+        description: The extracted payload data from the issue body for the issue id that was provided
+
+runs:
+    using: node12
+    main: dist/index.js

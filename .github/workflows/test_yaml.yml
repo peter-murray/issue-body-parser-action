@@ -1,0 +1,28 @@
+name: Test YAML Action
+
+on: issues
+
+jobs:
+  test:
+   runs-on: ubuntu-latest
+   name: Extract Payload
+   
+   steps:
+     - name: Checkout
+       uses: actions/checkout@v2
+       
+     - name: Parse Issue Body
+       uses: ./
+       id: issue_body_parser
+       with:
+         github_token: ${{ secrets.GITHUB_TOKEN }}
+         issue_id: ${{ github.event.issue.number }}
+         payload: yaml
+     
+     - name: Use Parsed Values
+       env:
+         DATA: ${{ steps.issue_body_parser.outputs.payload }}
+         CONTENT_ID_VALUE: ${{ fromJSON(steps.issue_body_parser.outputs.payload).id }}
+       run: >
+         echo "$DATA\n"
+         echo "ID: $CONTENT_ID_VALUE\n"
