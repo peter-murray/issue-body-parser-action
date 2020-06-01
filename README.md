@@ -14,7 +14,7 @@ For details on all parameters see [action.yml](action.yml).
 
 
 ### JSON Payload
-In this example the Issue that we are to parse is expected to contain a ```json ``` block somewhere inside the body. It will be the contents of this that is parsed and exposed by the action.
+In this example the Issue that we are to parse is expected to contain a `json` code block somewhere inside the body. It will be the contents of this that is parsed and exposed by the action. For example:
 
 ```
   ```json
@@ -23,6 +23,8 @@ In this example the Issue that we are to parse is expected to contain a ```json 
   }
   ```
 ```
+
+The configuration of the Action:
 
 ```yaml
 name: Parse Issue Body
@@ -33,6 +35,7 @@ with:
     # This is assuming that you are triggering off the issue, otherwise you will need to know the issue number
     issue_id: ${{ github.event.issue.number }}
 ```
+
 
 ### JSON Payload with a marker
 In this example the Issue body to parse may contain multiple JSON sections, so we use a `payload marker` to identify the target JSON block to parse. In this example, we will use the `target_payload` marker on the JSON block, e.g. 
