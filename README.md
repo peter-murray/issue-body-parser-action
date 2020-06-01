@@ -14,17 +14,21 @@ For details on all parameters see [action.yml](action.yml).
 
 
 ### JSON Payload
-In this example the Issue that we are to parse is expected to contain a `json` code block somewhere inside the body. It will be the contents of this that is parsed and exposed by the action. For example:
+In this example the Issue that we are to parse is expected to contain a `json` code block somewhere inside the body. It will be the contents of this that is parsed and exposed by the action.
 
+Example Issue Body Content:
 ```
-  ```json
-  {
-      "id": 1
-  }
-  ```
+    Some plain text data in the Issue body goes here and then we encode the payload 
+    data in a block like shown below.
+    
+    ```json
+    {
+        "id": 1
+    }
+    ```
 ```
 
-The configuration of the Action:
+The configuration of the Action in a workflow:
 
 ```yaml
 name: Parse Issue Body
@@ -38,16 +42,23 @@ with:
 
 
 ### JSON Payload with a marker
-In this example the Issue body to parse may contain multiple JSON sections, so we use a `payload marker` to identify the target JSON block to parse. In this example, we will use the `target_payload` marker on the JSON block, e.g. 
+In this example the Issue body to parse may contain multiple JSON sections, so we use a `payload marker` to identify the target JSON block to parse. In this example, we will use the `target_payload` marker on the JSON block. 
+
+Example Issue Body Content:
 
 ```
-  ```json target_payload
-  {
-      "id": 1,
-      "name": "Some target data"
-  }
-  ```
+    Some plain text data in the Issue body goes here and then we encode the payload 
+    data in a block like shown below.
+    
+    ```json target_payload
+    {
+        "id": 1,
+        "name": "Some target data"
+    }
+    ```
 ```
+
+The configuration of the Action in a workflow:
 
 ```yaml
 name: Parse Issue Body
@@ -60,20 +71,26 @@ with:
     payload_marker: target_payload
 ```
 
+
 ### YAML Payload
 In this example the Issue body to parse will contain a YAML section, so we need to set the `payload` to `yaml` so that we use the correct parser.
 
+Example Issue Body Content:
 ```
-  ```yaml
-  name: Hello World
-  id: 100
-  description: A simple hello world example
-  tags:
-    - good first issue
-    - needs triage
-    - bug
-  ```
+    ```yaml
+    name: Hello World
+    id: 100
+    description: A simple hello world example
+    tags:
+      - good first issue
+      - needs triage
+      - bug
+    ```
 ```
+
+
+
+The configuration of the Action in a workflow:
 
 ```yaml
 name: Parse Issue Body
