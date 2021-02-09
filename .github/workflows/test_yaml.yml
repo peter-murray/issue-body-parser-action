@@ -1,6 +1,7 @@
 name: Test YAML Action
 
-on: issues
+on:
+  workflow_dispatch:
 
 jobs:
   test:
@@ -16,7 +17,7 @@ jobs:
        id: issue_body_parser
        with:
          github_token: ${{ secrets.GITHUB_TOKEN }}
-         issue_id: ${{ github.event.issue.number }}
+         issue_id: 1
          payload: yaml
      
      - name: Use Parsed Values
