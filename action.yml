@@ -3,6 +3,10 @@ name: Issue Body Parser
 description: Parses the body of an issue to extract instructions/data
 author: peter-murray
 
+branding:
+  icon: alert-circle
+  color: blue
+
 inputs:
   github_token:
     description: The GitHub token that can be used to obtain the Issue via API lookup
