@@ -37,10 +37,10 @@ function getBodyPayloadRegex(payload) {
     header = `${payload}.*${marker}`;
   }
 
-  const regexString = `\`\`\`${header}([^]*)\`\`\``;
+  const regexString = `(?:\`{3})${header}([\s\S]*?)(?:\`{3})`;
   core.debug(`Regular Expression match is set to '${regexString}'`);
 
-  return new RegExp(regexString, 'im');
+  return new RegExp(regexString, 'igm');
 }
 
 
