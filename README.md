@@ -1,4 +1,4 @@
-# issue-body-parser
+# issue-body-parser-action
 
 This is a Github Action that can parse the contents of an Issue body for encoded JSON or YAML that can be used to pass information to other GitHub Action Steps.
 Think of this as just another way to provide the configuration data to a GitHub Actions workflow via "Issue Ops".
@@ -32,7 +32,7 @@ The configuration of the Action in a workflow:
 
 ```yaml
 name: Parse Issue Body
-uses: peter-murray/issue-body-parser@v1
+uses: peter-murray/issue-body-parser-action@v1
 id: issue_body_parser
 with:
     github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -62,7 +62,7 @@ The configuration of the Action in a workflow:
 
 ```yaml
 name: Parse Issue Body
-uses: peter-murray/issue-body-parser@v1
+uses: peter-murray/issue-body-parser-action@v1
 id: issue_body_parser
 with:
     github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -96,7 +96,7 @@ The configuration of the Action in a workflow:
 
 ```yaml
 name: Parse Issue Body
-uses: peter-murray/issue-body-parser@v1
+uses: peter-murray/issue-body-parser-action@v1
 id: issue_body_parser
 with:
     github_token: ${{ secrets.GITHUB_TOKEN }}
