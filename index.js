@@ -40,7 +40,7 @@ function getBodyPayloadRegex(payload) {
   const regexString = `\`\`\`${header}([^]*)\`\`\``;
   core.debug(`Regular Expression match is set to '${regexString}'`);
 
-  return new RegExp(regexString, 'igm');
+  return new RegExp(regexString, 'im');
 }
 
 
