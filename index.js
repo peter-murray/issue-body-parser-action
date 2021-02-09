@@ -54,6 +54,8 @@ function parseBody(content) {
     return null;
   }
 
+  core.debug(`Extracted payload data: ${mathed[1]}`);
+
   try {
     const result = parseExtractedData(payload, matched[1]);
     core.debug(`Matched and parsed data: '${JSON.stringify(result)}'`);
