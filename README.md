@@ -12,7 +12,7 @@ to doing this.
 
 For details on all parameters see [action.yml](action.yml).
 
-
+## Examples
 ### JSON Payload
 In this example the Issue that we are to parse is expected to contain a `json` code block somewhere inside the body. It will be the contents of this that is parsed and exposed by the action.
 
@@ -32,7 +32,7 @@ The configuration of the Action in a workflow:
 
 ```yaml
 name: Parse Issue Body
-uses: ./
+uses: peter-murray/issue-body-parser@v1
 id: issue_body_parser
 with:
     github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -62,7 +62,7 @@ The configuration of the Action in a workflow:
 
 ```yaml
 name: Parse Issue Body
-uses: ./
+uses: peter-murray/issue-body-parser@v1
 id: issue_body_parser
 with:
     github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -77,6 +77,8 @@ In this example the Issue body to parse will contain a YAML section, so we need 
 
 Example Issue Body Content:
 ```
+    A YAML payload will follow.
+
     ```yaml
     name: Hello World
     id: 100
@@ -94,7 +96,7 @@ The configuration of the Action in a workflow:
 
 ```yaml
 name: Parse Issue Body
-uses: ./
+uses: peter-murray/issue-body-parser@v1
 id: issue_body_parser
 with:
     github_token: ${{ secrets.GITHUB_TOKEN }}
