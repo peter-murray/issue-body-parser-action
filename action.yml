@@ -35,5 +35,5 @@ outputs:
     description: The extracted payload data from the issue body for the issue id that was provided
 
 runs:
-  using: node12
+  using: node16
   main: dist/index.js

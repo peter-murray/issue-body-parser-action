@@ -1,6 +1,6 @@
 {
   "name": "issue-body-parser",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/peter-murray/issue-body-parser#readme",
   "dependencies": {
-    "@actions/core": "^1.9.0",
+    "@actions/core": "^1.9.1",
     "@actions/github": "^2.2.0",
     "yaml": "^1.10.0"
   }
