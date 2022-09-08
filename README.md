@@ -104,3 +104,27 @@ with:
     issue_id: ${{ github.event.issue.number }}
     payload: yaml
 ```
+
+
+### Fail on missing payload
+By default the action will fail if the payload is not found in the issue. This behavior can be changed by setting the `fail_on_missing` option to `false`.
+
+```yaml
+name: Parse Issue Body
+uses: peter-murray/issue-body-parser-action@v2
+id: issue_body_parser
+with:
+    github_token: ${{ secrets.GITHUB_TOKEN }}
+    issue_id: ${{ github.event.issue.number }}
+    fail_on_missing: false
+```
+
+In this case, when the payload is not found in the issue, the payload value will be set to `NOT_FOUND`. You may want to skip other actions in your workflow if this is the case by using an `if` conditional as follows:
+```yaml
+name: Run something that uses the payload
+    if : steps.issue_body_parser_request.outputs.payload != 'NOT_FOUND'
+    id: run_something
+    env:
+        VERSION: ${{ fromJson(steps.issue_body_parser_request.outputs.payload).version }}
+    run: |
+    echo $VERSION

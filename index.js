@@ -8,6 +8,7 @@ let octokit = null;
 
 async function run() {
   const issueId = getRequiredInputValue('issue_id');
+  const failOnMissing = core.getBooleanInput('fail_on_missing');
 
   try {
     const issueBody = await getIssueBody(issueId),
@@ -16,7 +17,14 @@ async function run() {
     if (result !== null) {
       core.setOutput('payload', result);
     } else {
-      core.setFailed(`There was no valid payload found in the issue: ${issueId}.`);
+      if (!failOnMissing) {
+        core.warning(`There was no valid payload found in the issue: ${issueId}.`);
+        core.setOutput('payload', "NOT_FOUND");
+      } else {
+        core.warning(`failOnMissing: ${failOnMissing}.`);
+        core.setFailed(`There was no valid payload found in the issue: ${issueId}.`);
+      }
+      
     }
   } catch (err) {
     core.setFailed(err);
