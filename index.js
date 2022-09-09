@@ -22,7 +22,7 @@ async function run() {
       } else {
         core.warning(`There was no valid payload found in the issue: ${issueId}.`);
         core.warning(`Fail on missing is disabled, returning NOT_FOUND.`);
-        
+
         core.setOutput('payload', "NOT_FOUND");
       }
     }
@@ -101,7 +101,7 @@ function getOctokit() {
       core.error('Failed to provide a GitHub token for accessing the REST API.');
     }
 
-    octokit = new github.GitHub(token);
+    octokit = new github.getOctokit(token);
   }
   return octokit;
 }
