@@ -17,14 +17,14 @@ async function run() {
     if (result !== null) {
       core.setOutput('payload', result);
     } else {
-      if (!failOnMissing) {
-        core.warning(`There was no valid payload found in the issue: ${issueId}.`);
-        core.setOutput('payload', "NOT_FOUND");
-      } else {
-        core.warning(`failOnMissing: ${failOnMissing}.`);
+      if (failOnMissing) {
         core.setFailed(`There was no valid payload found in the issue: ${issueId}.`);
+      } else {
+        core.warning(`There was no valid payload found in the issue: ${issueId}.`);
+        core.warning(`Fail on missing is disabled, returning NOT_FOUND.`);
+        
+        core.setOutput('payload', "NOT_FOUND");
       }
-      
     }
   } catch (err) {
     core.setFailed(err);
@@ -110,7 +110,7 @@ function getOctokit() {
 function getIssueBody(id) {
   const octokit = getOctokit();
 
-  return octokit.issues.get({
+  return octokit.rest.issues.get({
     ...github.context.repo,
     issue_number: id
   }).then(result => {
