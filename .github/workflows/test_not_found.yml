@@ -34,5 +34,5 @@ test_not_found_without_failure:
        with:
          github_token: ${{ secrets.GITHUB_TOKEN }}
          issue_id: 1
-           fail_on_missing: false
+         fail_on_missing: false
          payload_marker: invalid_marker
