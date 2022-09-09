@@ -30,6 +30,11 @@ inputs:
     required: true
     default: ""
 
+  fail_on_missing:
+    description: If true, the action will fail if the payload is not found in the Issue body
+    required: false
+    default: 'true'
+
 outputs:
   payload:
     description: The extracted payload data from the issue body for the issue id that was provided
