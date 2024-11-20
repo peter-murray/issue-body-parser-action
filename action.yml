@@ -40,5 +40,5 @@ outputs:
     description: The extracted payload data from the issue body for the issue id that was provided
 
 runs:
-  using: node16
+  using: node20
   main: dist/index.js
