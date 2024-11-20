@@ -10,6 +10,7 @@ branding:
 inputs:
   github_token:
     description: The GitHub token that can be used to obtain the Issue via API lookup
+    default: ${{ github.token }}
     required: true
 
   issue_id:
