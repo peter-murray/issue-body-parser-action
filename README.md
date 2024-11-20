@@ -32,7 +32,7 @@ The configuration of the Action in a workflow:
 
 ```yaml
 name: Parse Issue Body
-uses: peter-murray/issue-body-parser-action@v1
+uses: peter-murray/issue-body-parser-action@v3
 id: issue_body_parser
 with:
     github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -62,7 +62,7 @@ The configuration of the Action in a workflow:
 
 ```yaml
 name: Parse Issue Body
-uses: peter-murray/issue-body-parser-action@v1
+uses: peter-murray/issue-body-parser-action@v3
 id: issue_body_parser
 with:
     github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -96,7 +96,7 @@ The configuration of the Action in a workflow:
 
 ```yaml
 name: Parse Issue Body
-uses: peter-murray/issue-body-parser-action@v1
+uses: peter-murray/issue-body-parser-action@v3
 id: issue_body_parser
 with:
     github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -111,7 +111,7 @@ By default the action will fail if the payload is not found in the issue. This b
 
 ```yaml
 name: Parse Issue Body
-uses: peter-murray/issue-body-parser-action@v2
+uses: peter-murray/issue-body-parser-action@v3
 id: issue_body_parser
 with:
     github_token: ${{ secrets.GITHUB_TOKEN }}
